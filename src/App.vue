@@ -2,7 +2,7 @@
   <div id="app">
     <h1>VUE STUDY FIRST</h1>
     <Navigation />
-    <SignUp v-if="currentComponent==='signup'" />
+    <SignUp @current="test" v-if="currentComponent==='signup'" />
     <UserInfo v-if="currentComponent==='userinfo'" />
   </div>
 </template>
@@ -19,12 +19,20 @@ export default {
     SignUp,
     UserInfo
   },
+  props: {
+    currentComponent: String
+  },
   data: function(){
     return {
       home: true,
       signUp: false,
       userInfo: false,
-      currentComponent: ''
+      // currentComponent: ''
+    }
+  },
+  methods: {
+    test(path){
+      this.currentComponent = path
     }
   }
 };

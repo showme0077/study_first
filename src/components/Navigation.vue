@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "Navigation",
+  props:['current'],
   data: function(){
     return {
       menuItems: [{key: 0, name: "Home", path:"/"}, {key: 1, name: "Sign Up", path: "signup"}, {key: 2, name: "User Info", path: "userinfo"}]
@@ -14,7 +15,9 @@ export default {
   },
   methods: {
     movePage: function(path){
-      this.$root.$children[0].currentComponent = path
+      // this.$root.$children[0].currentComponent = path
+      console.log(this.$emit('test', path))
+      this.$emit('test', path)
     }
   }
 };
