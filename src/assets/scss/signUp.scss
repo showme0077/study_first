@@ -1,0 +1,31 @@
+fieldset {
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 30px;
+  legend {
+    text-align: left;
+    font-size: 22px;
+  }
+  div {
+    height: 80px;
+    label {
+      display: block;
+      text-align: left;
+    }
+    input {
+      margin: 5px 0;
+      display: block;
+      width: 40%;
+      border: 1px solid #777;
+      font-size: 14px;
+    }
+  }
+}
+
+.errorValidation {
+  text-align: left;
+  color: #f00;
+}
+.errorInput {
+  border-color: red;
+}
