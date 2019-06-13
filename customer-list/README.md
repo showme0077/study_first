@@ -1,4 +1,4 @@
-# study_first
+# customer-list
 
 ## Project setup
 ```
