@@ -51,8 +51,12 @@
 </template>
 
 <script>
+import { EventBus } from "../main.js"
 export default {
   name: "SignUp",
+  created(){
+    EventBus.$emit("userInfo", this.user)
+  },
   data: function() {
     return {
       newName: "",
@@ -111,6 +115,7 @@ export default {
         this.newPhone = "";
         this.newAddress = "";
         this.$emit("popupOn");
+        EventBus.$emit("userInfo", this.user)
       }
     }
   }
