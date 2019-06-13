@@ -4,7 +4,12 @@
     <Navigation @goPage="test"/>
     <SignUp v-if="currentComponent==='signup'" @popupOn="onPopup= true"/>
     <UserInfo v-if="currentComponent==='userinfo'"/>
-    <Popup v-if="onPopup === true" @closePopup="onPopup=false"/>
+    <Popup v-if="onPopup === true" :popupText="popupText.complete" @closePopup="onPopup=false">
+      <button @click="console">취소</button>
+      <input type="text" slot="input">
+      <p slot="pTag">text</p>
+    </Popup>
+    <button @click="onPopup = true">button</button>
   </div>
 </template>
 
@@ -22,16 +27,27 @@ export default {
     UserInfo,
     Popup
   },
-  data: function() {
+  data() {
     return {
       currentComponent: "",
-      onPopup: false
+      onPopup: false,
+      popupText: {
+        complete: {
+          desc: "가입이 완료되었습니다."
+        },
+        fail: {
+          desc: "fail"
+        }
+      }
     };
   },
   created() {},
   methods: {
     test: function(e) {
       this.currentComponent = e;
+    },
+    console() {
+      console.log("cancel");
     }
   }
 };

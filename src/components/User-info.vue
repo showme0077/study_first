@@ -1,5 +1,14 @@
 <template>
-    <span>User-info</span>
+    <table>
+        <caption>유저 정보</caption>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
 </template>
 
 <script>
@@ -11,7 +20,7 @@ export default {
             currentUser: {}
         }
     },
-    created(){
+    created: function () {
         EventBus.$on("userInfo", user => {
             this.currentUser = user;
             console.log(this.currentUser)

@@ -2,7 +2,10 @@
   <div class="dimmed">
     <div class="popupWrap">
       <div class="content">
-        <strong>가입이 완료되었습니다.</strong>
+        <slot name="pTag"/>
+        <strong>{{popupText.desc}}</strong>
+        <slot name="input"/>
+        <slot/>
         <button @click="confirm">확인</button>
       </div>
     </div>
@@ -12,6 +15,7 @@
 <script>
 export default {
   name: "Popup",
+  props: ["popupText"],
   methods: {
     confirm: function() {
       this.$emit("closePopup");

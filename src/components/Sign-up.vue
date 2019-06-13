@@ -1,68 +1,72 @@
 <template>
-  <fieldset>
-    <legend>회원 가입 양식</legend>
-    <div class="box">
-      <label for="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        placeholder="이름을 입력하세요"
-        v-model="newName"
-        :class="{'errorInput': newName.length <= 0}"
-      >
-      <p class="errorValidation" v-if="newName==''">값을 입력해주세요.</p>
-    </div>
-    <div class="box">
-      <label for="age">Age</label>
-      <input
-        id="age"
-        type="text"
-        placeholder="나이를 입력하세요"
-        v-model="newAge"
-        :class="{'errorInput': newAge.length <= 0}"
-      >
-      <p class="errorValidation" v-if="newAge==''">값을 입력해주세요.</p>
-    </div>
-    <div class="box">
-      <label for="phone">Phone</label>
-      <input
-        id="phone"
-        type="text"
-        placeholder="전화번호를 입력하세요"
-        v-model="newPhone"
-        :class="{'errorInput': newPhone.length <= 0}"
-      >
-      <p class="errorValidation" v-if="newPhone==''">값을 입력해주세요.</p>
-    </div>
-    <div class="box">
-      <label for="address">Address</label>
-      <input
-        id="address"
-        type="text"
-        placeholder="주소를 입력하세요"
-        v-model="newAddress"
-        :class="{'errorInput': newAddress.length <= 0}"
-      >
-      <p class="errorValidation" v-if="newAddress==''">값을 입력해주세요.</p>
-    </div>
+  <form action="#">
+    <fieldset>
+      <legend>회원 가입 양식</legend>
+      <div class="box">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="이름을 입력하세요"
+          v-model="newName"
+          :class="{'errorInput': validationCheck}"
+        >
+        <p class="errorValidation" v-if="newName==''">값을 입력해주세요.</p>
+      </div>
+      <div class="box">
+        <label for="age">Age</label>
+        <input
+          id="age"
+          type="text"
+          placeholder="나이를 입력하세요"
+          v-model="newAge"
+          :class="{'errorInput': newAge.length <= 0}"
+        >
+        <p class="errorValidation" v-if="newAge==''">값을 입력해주세요.</p>
+      </div>
+      <div class="box">
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          placeholder="전화번호를 입력하세요"
+          v-model="newPhone"
+          :class="{'errorInput': newPhone.length <= 0}"
+        >
+        <p class="errorValidation" v-if="newPhone==''">값을 입력해주세요.</p>
+      </div>
+      <div class="box">
+        <label for="address">Address</label>
+        <input
+          id="address"
+          type="text"
+          placeholder="주소를 입력하세요"
+          v-model="newAddress"
+          :class="{'errorInput': newAddress.length <= 0}"
+        >
+        <p class="errorValidation" v-if="newAddress==''">값을 입력해주세요.</p>
+      </div>
 
-    <input @click="addUser" type="submit" value="회원 가입">
-  </fieldset>
+      <input @click="addUser" type="submit" value="회원 가입">
+    </fieldset>
+  </form>
 </template>
 
 <script>
-import { EventBus } from "../main.js"
+import { EventBus } from "../main.js";
 export default {
   name: "SignUp",
-  created(){
-    EventBus.$emit("userInfo", this.user)
+  created() {
+    EventBus.$emit("userInfo", this.user);
   },
   data: function() {
     return {
-      newName: "",
-      newAge: "",
-      newPhone: "",
-      newAddress: "",
+      newUserModel: {
+        newName: "",
+        newAge: "",
+        newPhone: "",
+        newAddress: ""
+      },
       user: [
         {
           key: 1,
@@ -96,6 +100,7 @@ export default {
     };
   },
   methods: {
+    validationCheck() {},
     addUser: function() {
       if (
         this.newName !== "" &&
@@ -115,7 +120,7 @@ export default {
         this.newPhone = "";
         this.newAddress = "";
         this.$emit("popupOn");
-        EventBus.$emit("userInfo", this.user)
+        EventBus.$emit("userInfo", this.user);
       }
     }
   }
