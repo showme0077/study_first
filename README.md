@@ -1,29 +1,32 @@
-# study_first
+# VUE STUDY
+[공식문서 링크](https://kr.vuejs.org/v2/guide/)
+## 커리큘럼
+4주 단위로 커리큘럼 제작<br/>
+<br/>
+사전 준비? <br/>
+공식 문서 읽고, 간단한 기능 만들기
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
+### 1주차(06.27)
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+사전 준비: 클래스와 스타일 바인딩 ~ 폼 입력 바인딩
+스터디 : 기능 리뷰 진행
 ```
 
-### Run your tests
+### 2주차(07.04)
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+사전 준비: 컴포넌트
+스터디 : 기능 리뷰 진행
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 3주차(07.11)
+```
+사전 준비: Components In-Depth
+스터디 : 기능 리뷰 진행
+```
+
+### 4주차(07.18)
+```
+사전 준비: 트랜지션 & 애니메이션
+스터디 : 기능 리뷰 진행
+```
