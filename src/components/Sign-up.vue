@@ -8,10 +8,10 @@
           id="name"
           type="text"
           placeholder="이름을 입력하세요"
-          v-model="newName"
+          v-model="newUserModel.newName"
           :class="{'errorInput': validationCheck}"
         >
-        <p class="errorValidation" v-if="newName==''">값을 입력해주세요.</p>
+        <p class="errorValidation" v-if="newUserModel.newName==''">값을 입력해주세요.</p>
       </div>
       <div class="box">
         <label for="age">Age</label>
@@ -19,21 +19,21 @@
           id="age"
           type="text"
           placeholder="나이를 입력하세요"
-          v-model="newAge"
-          :class="{'errorInput': newAge.length <= 0}"
+          v-model="newUserModel.newAge"
+          :class="{'errorInput': validationCheck}"
         >
-        <p class="errorValidation" v-if="newAge==''">값을 입력해주세요.</p>
+        <p class="errorValidation" v-if="newUserModel.newAge==''">값을 입력해주세요.</p>
       </div>
-      <div class="box">
+      <div class="box" >
         <label for="phone">Phone</label>
         <input
           id="phone"
           type="text"
           placeholder="전화번호를 입력하세요"
-          v-model="newPhone"
-          :class="{'errorInput': newPhone.length <= 0}"
+          v-model="newUserModel.newPhone"
+          :class="{'errorInput': validationCheck}"
         >
-        <p class="errorValidation" v-if="newPhone==''">값을 입력해주세요.</p>
+        <p class="errorValidation" v-if="newUserModel.newPhone==''">값을 입력해주세요.</p>
       </div>
       <div class="box">
         <label for="address">Address</label>
@@ -41,10 +41,10 @@
           id="address"
           type="text"
           placeholder="주소를 입력하세요"
-          v-model="newAddress"
-          :class="{'errorInput': newAddress.length <= 0}"
+          v-model="newUserModel.newAddress"
+          :class="{'errorInput': validationCheck}"
         >
-        <p class="errorValidation" v-if="newAddress==''">값을 입력해주세요.</p>
+        <p class="errorValidation" v-if="newUserModel.newAddress==''">값을 입력해주세요.</p>
       </div>
 
       <input @click="addUser" type="submit" value="회원 가입">
@@ -100,7 +100,9 @@ export default {
     };
   },
   methods: {
-    validationCheck() {},
+    validationCheck() {
+
+    },
     addUser: function() {
       if (
         this.newName !== "" &&

@@ -4,12 +4,7 @@
     <Navigation @goPage="test"/>
     <SignUp v-if="currentComponent==='signup'" @popupOn="onPopup= true"/>
     <UserInfo v-if="currentComponent==='userinfo'"/>
-    <Popup v-if="onPopup === true" :popupText="popupText.complete" @closePopup="onPopup=false">
-      <button @click="console">취소</button>
-      <input type="text" slot="input">
-      <p slot="pTag">text</p>
-    </Popup>
-    <button @click="onPopup = true">button</button>
+    <Popup v-if="onPopup === true" @closePopup="onPopup=false"/>
   </div>
 </template>
 
