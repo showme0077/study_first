@@ -1,49 +1,25 @@
 <template>
   <div id="app">
+    <img src="./assets/logo.png" alt="">
     <h1>VUE STUDY FIRST</h1>
-    <Navigation @goPage="test"/>
-    <SignUp v-if="currentComponent==='signup'" @popupOn="onPopup= true"/>
-    <UserInfo v-if="currentComponent==='userinfo'"/>
-    <Popup v-if="onPopup === true" @closePopup="onPopup=false"/>
+    <Navigation />
+    <Gallery />
   </div>
 </template>
 
 <script>
+import Gallery from "./components/Gallery.vue";
 import Navigation from "./components/Navigation.vue";
-import SignUp from "./components/Sign-up.vue";
-import UserInfo from "./components/User-info.vue";
-import Popup from "./components/Popup.vue";
 
 export default {
   name: "app",
   components: {
-    Navigation,
-    SignUp,
-    UserInfo,
-    Popup
+    Gallery,
+    Navigation
   },
   data() {
     return {
-      currentComponent: "",
-      onPopup: false,
-      popupText: {
-        complete: {
-          desc: "가입이 완료되었습니다."
-        },
-        fail: {
-          desc: "fail"
-        }
-      }
     };
-  },
-  created() {},
-  methods: {
-    test: function(e) {
-      this.currentComponent = e;
-    },
-    console() {
-      console.log("cancel");
-    }
   }
 };
 </script>
