@@ -2,31 +2,37 @@
   <div id="app">
     <img src="./assets/logo.png" alt="">
     <h1>VUE STUDY FIRST</h1>
-    <Navigation />
-    <p>{{total}}</p>
-    <Study v-on:increment="incrementTotal" />
-    <Study v-on:increment="incrementTotal" />
+    <Navigation :menus="menuItems" @goPage="pageMove"/>
+    <Gallery v-if="currentPage ==='gallery'"/>
+    <Member-form v-if="currentPage==='member-form'"/>
   </div>
 </template>
 
 <script>
-import Navigation from "./components/Navigation.vue";
-import Study from "./components/Study.vue";
+import Navigation from "./components/Navigation.vue"
+import Gallery from "./components/Gallery.vue"
+import MemberForm from "./components/MemberForm.vue"
 
 export default {
   name: "app",
   components: {
     Navigation,
-    Study
+    Gallery,
+    MemberForm
   },
   data() {
     return {
-      total: 0
+      menuItems: [
+        { key: 0, name: "Home", path: "/" },
+        { key: 1, name: "Gallery", path: "gallery" },
+        { key: 2, name: "Study", path: "member-form" }
+      ],
+      currentPage: ''
     }
   },
   methods: {
-    incrementTotal: function() {
-      this.total += 1
+    pageMove: function(e){
+      this.currentPage = e
     }
   }
 };

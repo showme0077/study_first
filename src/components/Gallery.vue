@@ -8,7 +8,7 @@
             </ul>
         </div>
         <ul class="gallery">
-            <li  v-for="(item, key) in images" :key="key" v-if="item.name == nameFilter">
+            <li  v-for="(item, key) in images" :key="key">
                 <img :src="item.url" alt="">
                 <p v-text="item.name"></p>
             </li>
