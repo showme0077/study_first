@@ -8,7 +8,7 @@
             </ul>
         </div>
         <ul class="gallery">
-            <li  v-for="(item, key) in images" :key="key" >
+            <li  v-for="(item, key) in images" :key="key" v-if="item.name == nameFilter">
                 <img :src="item.url" alt="">
                 <p v-text="item.name"></p>
             </li>
@@ -38,18 +38,10 @@
             }
         },
         methods: {
-            nameFilter: function(name){
+            nameFilter: function(){
                 return this.images.filter(function (number) {
-                    console.log(number.name === name)
-                    return number.name  === name
-                })
-            }
-        },
-        computed: {
-            evenNumbers: function (name) {
-                return this.images.filter(function (number) {
-                    console.log(number)
-                    return number.name  === name
+                    console.log(number.name)
+                    return number.name
                 })
             }
         }

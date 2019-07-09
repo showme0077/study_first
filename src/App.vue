@@ -3,23 +3,31 @@
     <img src="./assets/logo.png" alt="">
     <h1>VUE STUDY FIRST</h1>
     <Navigation />
-    <Gallery />
+    <p>{{total}}</p>
+    <Study v-on:increment="incrementTotal" />
+    <Study v-on:increment="incrementTotal" />
   </div>
 </template>
 
 <script>
-import Gallery from "./components/Gallery.vue";
 import Navigation from "./components/Navigation.vue";
+import Study from "./components/Study.vue";
 
 export default {
   name: "app",
   components: {
-    Gallery,
-    Navigation
+    Navigation,
+    Study
   },
   data() {
     return {
-    };
+      total: 0
+    }
+  },
+  methods: {
+    incrementTotal: function() {
+      this.total += 1
+    }
   }
 };
 </script>
