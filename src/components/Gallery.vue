@@ -1,15 +1,16 @@
 <template>
     <div class="galleryWrap">
-        <div v-if="images">
+        <div>
             <ul>
                 <li v-for="(item, key) in buttons" :key="key">
-                    <button v-text="item.name" @click="nameFilter(item.name)"></button>
+                    <button v-text="item.name" @click="selected = item.name"></button>
                 </li>
             </ul>
         </div>
         <ul class="gallery">
             <li  v-for="(item, key) in images" :key="key">
-                <img :src="item.url" alt="">
+                {{filterName}}
+                <img :src="filterName" alt="">
                 <p v-text="item.name"></p>
             </li>
         </ul>
@@ -21,6 +22,7 @@
         name: "gallery",
         data() {
             return {
+                selected: '',
                 buttons: [
                     {id: 0, name: "all"},
                     {id: 1, name: "hodu"},
@@ -33,16 +35,31 @@
                     {id: 2, name: "jadu", url: require("@/assets/images/jadu1.png")},
                     {id: 3, name: "jadu", url: require("@/assets/images/jadu2.png")},
                     {id: 4, name: "jadu", url: require("@/assets/images/jadu3.png")}
-                ],
-                numbers: [ 'a', 'b', 'c', 'd', '5' ]
+                ]
             }
         },
         methods: {
-            nameFilter: function(){
-                return this.images.filter(function (number) {
-                    console.log(number.name)
-                    return number.name
-                })
+            // nameFilter: function(button){
+            //     return this.images.filter(function (number) {
+            //         console.log(number.name)
+            //         if(button === number.name)
+            //         {
+            //             return number.name
+            //         }
+            //
+            //     })
+            // }
+        },
+        computed: {
+            filterName: function() {
+                let itemUrl = []
+                for(let item in this.images ){
+                    if(this.selected === item.name){
+                        itemUrl.push(item.url)
+                        return itemUrl
+                    }
+                    return itemUrl
+                }
             }
         }
     }
