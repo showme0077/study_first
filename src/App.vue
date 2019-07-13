@@ -4,28 +4,30 @@
     <h1>VUE STUDY FIRST</h1>
     <Navigation :menus="menuItems" @goPage="pageMove"/>
     <Gallery v-if="currentPage ==='gallery'"/>
-    <Member-form v-if="currentPage==='member-form'"/>
+    <AddUpdate v-if="currentPage=== 'update' || currentPage=== 'sign-up'" :naming="currentPage"/>
   </div>
 </template>
 
 <script>
 import Navigation from "./components/Navigation.vue"
 import Gallery from "./components/Gallery.vue"
-import MemberForm from "./components/MemberForm.vue"
+import AddUpdate from "./components/AddUpdate.vue"
+
 
 export default {
   name: "app",
   components: {
     Navigation,
     Gallery,
-    MemberForm
+    AddUpdate
   },
   data() {
     return {
       menuItems: [
         { key: 0, name: "Home", path: "/" },
         { key: 1, name: "Gallery", path: "gallery" },
-        { key: 2, name: "Study", path: "member-form" }
+        { key: 2, name: "sign-up", path: "sign-up" },
+        { key: 3, name: "update", path: "update" }
       ],
       currentPage: ''
     }

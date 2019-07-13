@@ -1,16 +1,16 @@
 <template>
-    <SignUp :textList="formText" @sendText="receiveText">
+    <AddUpdate :textList="formText" @sendText="receiveText">
         <legend slot="memberTitle">{{formText.title}}</legend>
         <input type="text" placeholder="id를 입력하세요" slot="idInput"/>
-    </SignUp>
+    </AddUpdate>
 </template>
 
 <script>
-import SignUp from "../components/SignUp"
+import AddUpdate from "./AddUpdate"
 export default {
     name: "MembersForm",
     components: {
-      SignUp
+        AddUpdate
     },
     data() {
         return {
