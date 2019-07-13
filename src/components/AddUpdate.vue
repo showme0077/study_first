@@ -1,7 +1,12 @@
 <template>
     <fieldset>
-        <slot name="memberTitle"/>
-        <slot name="idInput"/>
+        <!--<slot name="memberTitle"/>-->
+        <!--<slot name="idInput"/>-->
+        <legend>회원가입</legend>
+        <label for="id">id</label>
+        <input id="id" type="text" placeholder="id 입력"/>
+        <label for="pw">password</label>
+        <input id="pw" type="password" placeholder="password"/>
     </fieldset>
 </template>
 
