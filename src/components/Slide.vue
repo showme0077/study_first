@@ -21,7 +21,7 @@
         </div>
         <div class="contentsWrap">
         <transition
-            name="slide-transition"
+            name="custom-classes-transition"
             enter-active-class="animated tada"
             leave-active-class="animated bounceOutRight"
         >

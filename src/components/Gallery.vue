@@ -7,12 +7,13 @@
         </li>
       </ul>
     </div>
-    <ul class="gallery">
-      <li v-for="(item, key) in filterName" :key="key">
-        <img :src="item.url" alt>
-        <p v-text="item.name"></p>
-      </li>
-    </ul>
+        <transition-group tag="ul" class="gallery" name="list" >
+        <li v-for="(item, key) in filterName" :key="key">
+          <img :src="item.url" alt>
+          <p v-text="item.name"></p>
+        </li>
+
+        </transition-group>
   </div>
 </template>
 
@@ -79,4 +80,34 @@ export default {
 </script>
 
 <style scoped>
+  .gallery li { width: calc(20% - 15px); display: inline-block; margin-left: 10px;}
+  .gallery li:last-child { margin-right: 10px;}
+  img {width: 100%;}
+
+  .list-enter-active,
+  .list-leave-active,
+  .list-move {
+    transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+    transition-property: opacity, transform;
+  }
+
+  .list-enter {
+    opacity: 0;
+    transform: translateX(50px) scaleY(0.5);
+  }
+
+  .list-enter-to {
+    opacity: 1;
+    transform: translateX(0) scaleY(1);
+  }
+
+  .list-leave-active {
+    position: absolute;
+  }
+
+  .list-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center top;
+  }
 </style>
