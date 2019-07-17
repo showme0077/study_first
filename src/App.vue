@@ -5,6 +5,7 @@
     <Navigation :menus="menuItems" @goPage="pageMove"/>
     <Gallery v-if="currentPage ==='gallery'"/>
     <AddUpdate v-if="currentPage=== 'update' || currentPage=== 'sign-up'" :naming="currentPage"/>
+    <Slide v-if="currentPage === 'slide'"/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import Navigation from "./components/Navigation.vue"
 import Gallery from "./components/Gallery.vue"
 import AddUpdate from "./components/AddUpdate.vue"
+import Slide from "./components/Slide.vue"
 
 
 export default {
@@ -19,7 +21,8 @@ export default {
   components: {
     Navigation,
     Gallery,
-    AddUpdate
+    AddUpdate,
+    Slide
   },
   data() {
     return {
@@ -27,7 +30,8 @@ export default {
         { key: 0, name: "Home", path: "/" },
         { key: 1, name: "Gallery", path: "gallery" },
         { key: 2, name: "sign-up", path: "sign-up" },
-        { key: 3, name: "update", path: "update" }
+        { key: 3, name: "update", path: "update" },
+        { key: 4, name: "slide", path:"slide"}
       ],
       currentPage: ''
     }
@@ -56,6 +60,7 @@ export default {
 }
 </style>
 
-<style lang="sass">
-  @import "./assets/scss/common.scss"
+<style>
+  @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+  @import "./assets/scss/common.scss";
 </style>
