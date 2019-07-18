@@ -8,11 +8,10 @@
       </ul>
     </div>
         <transition-group tag="ul" class="gallery" name="gallery" >
-        <li v-for="(item, index) in filterName" :key="index">
-          <img :src="item.url" alt>
-          <p v-text="item.name"></p>
-        </li>
-
+            <li v-for="item in filterName" :key="item">
+              <img :src="item.url" alt>
+              <p v-text="item.name"></p>
+            </li>
         </transition-group>
   </div>
 </template>
@@ -110,9 +109,10 @@ opacity: 0;
 transform: scaleY(0);
 transform-origin: center top;
 }
+
+
 .gallery-enter-active{
     animation: flash 1s;
-
 }
 .gallery-leave-active {
     animation: bounceOut 1s;
