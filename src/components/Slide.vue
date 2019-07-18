@@ -1,32 +1,17 @@
 <template>
     <div class="wrap">
-        <div id="example-3">
-            <button @click="show = !show">
-                Toggle render
-            </button>
-            <transition
-                    name="custom-classes-transition"
-                    enter-active-class="animated tada"
-                    leave-active-class="animated bounceOutRight"
-            >
-                <p v-if="show">hello</p>
-            </transition>
-        </div>
-
-
         <div class="timerWrap">
             <label for="timer">Timer 설정</label>
             <input id="timer" type="number" v-model="timer" placeholder="숫자만 입력하세요."/>
             <button id="timerSubmit" @click="startRotation">확인</button>
         </div>
-        <div class="contentsWrap">
-        <transition
-            name="custom-classes-transition"
-            enter-active-class="animated tada"
-            leave-active-class="animated bounceOutRight"
-        >
-            <p> {{slideText[currentNumber]}} </p>
-        </transition>
+        <div class="contentsWrap"
+             @mouseover="stopRotation"
+             @mouseout="startRotation">
+            <a @click="prev">Previous</a> || <a @click="next">Next</a>
+            <transition name="fade">
+                <p> {{slideText[Math.abs(currentNumber) % slideText.length]}} </p>
+            </transition>
         <button v-text="slideStatus" @click="autoPlay"></button>
         </div>
     </div>
@@ -76,5 +61,15 @@
 </script>
 
 <style scoped>
-
+    .fade-transition {
+        transition: all 0.8s ease;
+        overflow: hidden;
+        visibility: visible;
+        opacity: 1;
+        position: absolute;
+    }
+    .fade-enter, .fade-leave {
+        opacity: 0;
+        visibility: hidden;
+    }
 </style>

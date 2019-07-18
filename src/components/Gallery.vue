@@ -7,8 +7,8 @@
         </li>
       </ul>
     </div>
-        <transition-group tag="ul" class="gallery" name="list" >
-        <li v-for="(item, key) in filterName" :key="key">
+        <transition-group tag="ul" class="gallery" name="gallery" >
+        <li v-for="(item, index) in filterName" :key="index">
           <img :src="item.url" alt>
           <p v-text="item.name"></p>
         </li>
@@ -80,34 +80,46 @@ export default {
 </script>
 
 <style scoped>
-  .gallery li { width: calc(20% - 15px); display: inline-block; margin-left: 10px;}
-  .gallery li:last-child { margin-right: 10px;}
-  img {width: 100%;}
+.gallery li { width: calc(20% - 15px); display: inline-block; margin-left: 10px;}
+.gallery li:last-child { margin-right: 10px;}
+img {width: 100%;}
 
-  .list-enter-active,
-  .list-leave-active,
-  .list-move {
-    transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
-    transition-property: opacity, transform;
-  }
+.list-enter-active,
+.list-leave-active,
+.list-move {
+transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+transition-property: opacity, transform;
+}
 
-  .list-enter {
-    opacity: 0;
-    transform: translateX(50px) scaleY(0.5);
-  }
+.list-enter {
+opacity: 0;
+transform: translateX(50px) scaleY(0.5);
+}
 
-  .list-enter-to {
-    opacity: 1;
-    transform: translateX(0) scaleY(1);
-  }
+.list-enter-to {
+opacity: 1;
+transform: translateX(0) scaleY(1);
+}
 
-  .list-leave-active {
-    position: absolute;
-  }
+.list-leave-active {
+position: absolute;
+}
 
-  .list-leave-to {
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: center top;
-  }
+.list-leave-to {
+opacity: 0;
+transform: scaleY(0);
+transform-origin: center top;
+}
+.gallery-enter-active{
+    animation: flash 1s;
+
+}
+.gallery-leave-active {
+    animation: bounceOut 1s;
+}
+.gallery-enter,
+.gallery-leave-to{
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>
