@@ -5,6 +5,11 @@
             <input id="timer" type="number" v-model="timer" placeholder="숫자만 입력하세요."/>
             <button id="timerSubmit" @click="startRotation">확인</button>
         </div>
+        <div class="addWrap">
+            <label for="addText">슬라이드 추가</label>
+            <input id="addText" type="text" placeholder="슬라이드에 추가할 내용 입력"/>
+            <button id="add">추가</button>
+        </div>
         <div class="contentsWrap"
              @mouseover="stopRotation"
              @mouseout="startRotation">
@@ -23,6 +28,7 @@
         data() {
             return {
                 slideText: ["ONE", "TWO", "THREE", "FOUR"],
+                addText: "",
                 currentNumber: 0,
                 timer: 0,
                 slideStatus: "play",

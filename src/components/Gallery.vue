@@ -110,7 +110,6 @@ transform: scaleY(0);
 transform-origin: center top;
 }
 
-
 .gallery-enter-active{
     animation: flash 1s;
 }
